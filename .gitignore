@@ -1,0 +1,9 @@
+captcha/
+config/
+doc/
+errors/
+.htaccess
+index.php
+jpgraph3/
+logs/
+mycyc/

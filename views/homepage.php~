@@ -1,0 +1,81 @@
+<div class="main">
+	<div class="head_container">
+		<table class="region">
+			<tbody>
+				<tr>
+				<?php
+					foreach ($schoolInfo as $school_row) { ?>
+							<td class="university">
+								<a class='univ_hover'href="university/<?=$school_row['univ_short_name']?>">
+									<img src="/img/univ/<?=$school_row['imgLoc']?>"class="hover" id="<?=$school_row['univ_short_name'] ?>" onclick="$.switchLoc(this)" />
+								</a>
+							</td>
+				<?php  } ?>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id='ciber-search'>
+		<div class="ciber-wrapper">
+			<header class="map-header">
+				<a id="em_close" class="icon-back" title="返回"><i>返回</i></a>
+				<div id="em_searchWrapper" class="search-wrapper">
+					<span id="em_searchCity" class="search-city">北京</span>
+					<input type="text" id="search" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"autocomplete="off" placeholder="输入学校，写字楼或某某路多少号确定位置">
+					<input id="em_searchInput" class="search-input ui-autocomplete-input ui-autocomplete-loading"  type="text" >
+						<span role="status" aria-live="polite" class="ui-helper-hidden-accessible">10 results are available, use up and down arrow keys to navigate.</span>
+						<a id="em_searchButton" class="icon-search">搜索</a>
+				</div>
+			</header>
+		</div>
+	</div>
+
+
+</div>
+
+	<script type="text/javascript">
+		$.switchLoc=function(obj){
+			$.cookie('location', obj.id, {path:'/', expire: 30});
+			window.location.href='/university/'+obj.id;
+			// alert(obj.id);
+		}
+
+	</script>
+
+<script src="/js/jquery.ui.core.js"></script>
+<script src="/js/jquery.ui.widget.js"></script>
+<script src="/js/jquery.ui.position.js"></script>
+<script src="/js/jquery.ui.autocomplete.js"></script>
+<script type="text/javascript">
+$(function() {
+	var data = [
+		{"label":"Aragorn", "actor":"Viggo Mortensen"},
+		{"label":"Arwen", "actor":"Liv Tyler"},
+		{"label":"Bilbo Baggins", "actor":"Ian Holm"},
+		{"label":"Boromir", "actor":"Sean Bean"},
+		{"label":"Frodo Baggins", "actor":"Elijah Wood"},
+		{"label":"Gandalf", "actor":"Ian McKellen"},
+		{"label":"Gimli", "actor":"John Rhys-Davies"},
+		{"label":"Gollum", "actor":"Andy Serkis"},
+		{"label":"Legolas", "actor":"Orlando Bloom"},
+		{"label":"Meriadoc Merry Brandybuck", "actor":"Dominic Monaghan"},
+		{"label":"Peregrin Pippin Took", "actor":"Billy Boyd"},
+		{"label":"Samwise Gamgee", "actor":"Sean Astin"}
+		];
+	$( "#search" ).autocomplete(
+	{
+		source:data,
+		select: function( event, ui ) {
+			$( "#search" ).val( ui.item.label + " / " + ui.item.actor );
+			return false;
+		}
+	}).data( "autocomplete" )._renderItem = function( ul, item ) {
+		return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a><strong>" + item.label + "</strong> / " + item.actor + "</a>" )
+			.appendTo( ul );
+		};
+
+});
+	</script>
+

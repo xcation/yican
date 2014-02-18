@@ -1,0 +1,10 @@
+<div class='m_right'>
+	<label>区域名称：（名字以空格分割）</label>
+	<input type="text" />
+	<label for="">设置区域管理员帐号：</label>
+	<input type="text" />
+	<label for="">密码</label>
+	<input type="password" />
+</div>
+</div>
+</div>
