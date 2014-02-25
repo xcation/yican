@@ -508,7 +508,7 @@
 				}
 			}
 			else {
-				if (!$this->check_store_valid($region_info['region'], $store_post_id))
+				if (!$this->check_store_valid($region_info['region'], $store_id))
 					return;
 				$data['alert'] = true;
 				$passwd_1 = $this->input->post('passwd_1');
