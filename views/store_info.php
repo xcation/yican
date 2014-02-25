@@ -4,62 +4,7 @@
     <div class='sun'></div>
   </div>
     <div class='find_food'>
-      <div class='q_t_intro'>今天吃什么？随机出现卖的最好的菜哦</div>
-      <div id="quick_find" class='modal hide fade' tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-header black_a">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <a class='today'data-placement="top" data-toggle="tooltip"
-               data-original-title="今天吃什么的二十张图片是昨日的前十销量榜加十张随机食物图片产生的，点问号试试吧！">今天吃什么</a>
-          </div>
-          <div class="modal-body">
-            <div class="banner black">
-              <ul>
-                <?php
-              foreach ($img as $key=>$val) { ?>
-                <li>
-                    <a>
-                      <img class="random_food" src="<?php if (@$val['food_img_src'])
-                                                              echo "/img/food/{$val['food_img_src']}";
-                                                          else
-                                                              echo "/img/logo.png";?>" >
-                    </a>
-                    <div class="random_food_intros">
-                        <div class='q_food_left'>
-                          <div class='quick_find_left'title='<?=@$val['storeName']?>'><?=@$val['storeName']?></div>
-                          <div class='quick_find_left'title='<?=@$val['food_name']?>'><?=@$val['food_name']?></div>
-                          <div>
-                              单价：<span><?=$val['price']?></span>
-                          </div>
-                          <div class='q_food'>
-                              昨日销量：<span><?=@$val['daily_sale']?></span>
-                          </div>
-                        </div>
-                        <div class='q_food_right'>
-                          <form action="/store/<?=$university_id?>/<?=@$val['store_id']?>/#food-<?=@$val['food_id']?>" method='post'>
-                            <input type='submit' class='btn btn-warning'value='<?php
-                              if ($val['state'] != '0')
-                                echo "休息中";
-                              else
-                                echo "来易份"; ?>'
-                              <?php
-                              if ($val['state'] != '0')
-                                echo "disabled";?> class='btn another_one'></input>
-                              <input type='hidden' name='food' value="<?=$val['food_id']?>">
-                          </form>
-                        </div>
-                    </div>
-                </li>
-                <?php } ?>
-              </ul>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">返回</button>
-          </div>
-      </div>
-      <div class='question_mark'>
-          <a class='q_mark' title='点我看看嘛' data-toggle="modal"data-target='#quick_find'>?</a>
-      </div>
+
 
       <script type="text/javascript">
         $('.today').tooltip();
